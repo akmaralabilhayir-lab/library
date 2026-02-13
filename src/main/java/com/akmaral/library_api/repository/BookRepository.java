@@ -67,5 +67,23 @@ public class BookRepository {
 
     }
 
+    public boolean existsByName(String name) {
+        String sql = "SELECT COUNT(*) FROM books WHERE LOWER(name) = LOWER(?)";
+        try (Connection c = db.getConnection();
+             PreparedStatement ps = c.prepareStatement(sql)) {
+            ps.setString(1, name);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                return rs.getInt(1) > 0;
+            }
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        return false;
+    }
+
+
+
+
 
 }
