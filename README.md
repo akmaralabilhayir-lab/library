@@ -226,8 +226,55 @@ library_api/
 
 │
 
-├── README.md
-
 └── .gitignore
+
+
+# Bonus Task Implementation
+
+The following improvements were implemented in the Book module:
+
+1️. Book Validation
+
+Additional business rules were added:
+
+Book name must contain at least 3 characters.
+
+Duplicate book names are not allowed.
+
+A new method existsByName() was implemented in BookRepository, and validation logic was added in the BookService layer.
+
+<img width="810" height="579" alt="image" src="https://github.com/user-attachments/assets/47f74c2e-f8ec-402d-b823-a26d7d06b075" />
+
+
+<img width="800" height="557" alt="image" src="https://github.com/user-attachments/assets/0f7cac3a-c843-4d43-a979-50c323aca339" />
+
+
+
+2️. Global Exception Handling
+
+A GlobalExceptionHandler was implemented using @RestControllerAdvice.
+
+Now, custom exceptions such as:
+
+InvalidInputException
+
+DuplicateResourceException
+
+ResourceNotFoundException
+
+return structured JSON responses instead of default server errors.
+
+Example response:
+
+{
+
+  "error": "Book already exists"
+  
+}
+
+
+This improves API clarity and follows REST best practices.
+
+
 
 
